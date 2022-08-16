@@ -25,6 +25,3 @@ private:
 	TArray<AActor*> ItemsInWorld;
 	int32 ItemsCollected;
 };
-
-
-

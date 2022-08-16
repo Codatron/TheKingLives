@@ -27,6 +27,7 @@ void AFinishLineTrigger::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherAc
 	{
 		PrintString("Overlap Begin");
 		ATheKingLivesGameMode* GameModeRef = GetWorld()->GetAuthGameMode<ATheKingLivesGameMode>();
+
 		if (GameModeRef->GetItemsCollected() == GameModeRef->GetItemsInWorld())
 		{
 			PrintString("You Win!");
@@ -37,11 +38,3 @@ void AFinishLineTrigger::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherAc
 		}
 	}
 }
-
-//void AFinishLineTrigger::NotifyActorBeginOverlap(AActor* OtherActor)
-//{
-//	if (OtherActor == TheKingRef)
-//	{
-//		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Turquoise, FString::Printf(TEXT("Overlapped!")));
-//	}
-//}

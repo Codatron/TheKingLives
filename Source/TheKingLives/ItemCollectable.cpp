@@ -14,7 +14,8 @@ AItemCollectable::AItemCollectable()
 
 	SceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("SceneRoot"));
 	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
-	RootComponent = SceneRoot;
+	
+	SceneRoot->SetupAttachment(GetRootComponent());
 	StaticMesh->SetupAttachment(SceneRoot);
 	StaticMesh->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Overlap);
 }
@@ -33,7 +34,6 @@ void AItemCollectable::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	Rotate(DeltaTime);
-
 }
 
 void AItemCollectable::NotifyActorBeginOverlap(AActor* OtherActor)
@@ -54,4 +54,3 @@ void AItemCollectable::Rotate(float DeltaTime)
 	FQuat QuatRotation = FQuat(NewRotation);
 	AddActorLocalRotation(QuatRotation * DeltaTime, false, 0, ETeleportType::None);
 }
-

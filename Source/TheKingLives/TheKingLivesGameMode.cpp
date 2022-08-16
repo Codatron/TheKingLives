@@ -22,6 +22,7 @@ void ATheKingLivesGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 
+	// Counts all instances of a class in th e world and stores them in an array
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AItemCollectable::StaticClass(), ItemsInWorld);
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::White, FString::Printf(TEXT("%d"), GetItemsInWorld()));
 }
