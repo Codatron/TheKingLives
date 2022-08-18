@@ -27,7 +27,14 @@ protected:
 		class USpringArmComponent* SpringArm;
 
 	void MoveRight(float Value);
+	void ChangeSpringArmLength();
+	void CheckDeath();
 
+	UPROPERTY(EditAnywhere)
+		float DeathThreshold;
 	FVector TempLocation;
 	float CameraOffset;
+	uint8 bToggleSpringArmLength;
+	uint8 bIsFalling;
+	uint8 bIsDead;
 };

@@ -30,13 +30,4 @@ protected:
 	// Variables
 	UPROPERTY(EditAnywhere, Category = "Platform Properties")
 		uint8 bCanMove:1;
-	UPROPERTY(EditAnywhere, Category = "Platform Properties")
-		float Speed;
-	UPROPERTY(EditAnywhere, Category = "Platform Properties")
-		float MinHeight;
-	UPROPERTY(EditAnywhere, Category = "Platform Properties")
-		float MaxHeight;
-
-	float CurrentZLocation;
-	uint8 bIsMovingUp:1;
 };
