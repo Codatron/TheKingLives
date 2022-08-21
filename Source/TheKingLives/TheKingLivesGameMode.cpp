@@ -25,7 +25,10 @@ void ATheKingLivesGameMode::BeginPlay()
 	// Counts all instances of a class in th e world and stores them in an array
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AItemCollectable::StaticClass(), ItemsInWorld);
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::White, FString::Printf(TEXT("%d"), GetItemsInWorld()));
+
+	Lives = 3;
 }
+
 
 int32 ATheKingLivesGameMode::GetItemsCollected()
 {
@@ -40,4 +43,14 @@ int32 ATheKingLivesGameMode::GetItemsInWorld()
 void ATheKingLivesGameMode::ItemCollected()
 {
 	ItemsCollected++;
+}
+
+int32 ATheKingLivesGameMode::GetLives()
+{
+	return Lives;
+}
+
+void ATheKingLivesGameMode::SetLives(int32 LivesLost)
+{
+	Lives -= LivesLost;
 }

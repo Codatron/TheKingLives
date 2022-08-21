@@ -16,6 +16,10 @@ public:
 
 	int32 GetItemsCollected();
 	int32 GetItemsInWorld();
+	int32 GetLives();
+
+	void SetLives(int32 LivesLost);
+
 	void ItemCollected();
 
 protected:
@@ -24,4 +28,5 @@ protected:
 private:
 	TArray<AActor*> ItemsInWorld;
 	int32 ItemsCollected;
+	int32 Lives;
 };

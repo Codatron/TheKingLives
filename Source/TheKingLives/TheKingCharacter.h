@@ -15,8 +15,10 @@ public:
 	ATheKingCharacter();
 
 	virtual void Tick(float DeltaTime) override;
-
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	UPROPERTY(EditAnywhere, Category = "Game Mode")
+		class ATheKingLivesGameMode* GameMode;
 
 protected:
 	virtual void BeginPlay() override;
@@ -34,7 +36,7 @@ protected:
 		float DeathThreshold;
 	FVector TempLocation;
 	float CameraOffset;
-	uint8 bToggleSpringArmLength;
-	uint8 bIsFalling;
-	uint8 bIsDead;
+	uint8 bToggleSpringArmLength : 1;
+	uint8 bIsFalling : 1;
+	uint8 bIsDead : 1;
 };

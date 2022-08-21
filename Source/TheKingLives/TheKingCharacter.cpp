@@ -6,6 +6,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "TheKingLivesGameMode.h"
 
 // Sets default values
 ATheKingCharacter::ATheKingCharacter()
@@ -38,6 +39,12 @@ void ATheKingCharacter::BeginPlay()
 	Super::BeginPlay();
 	
 	bToggleSpringArmLength = !bToggleSpringArmLength;
+	bIsDead = false;
+
+	GameMode = GetWorld()->GetAuthGameMode<ATheKingLivesGameMode>();
+
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, FString::Printf(TEXT("%d"), GameMode->GetLives()));
+
 }
 
 // Called every frame
@@ -72,8 +79,12 @@ void ATheKingCharacter::CheckDeath()
 
 	if (CurrentZ < DeathThreshold)
 	{
+		Destroy();
+		GameMode->SetLives(1);
+
 		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, FString::Printf(TEXT("You dead!")));
 		Destroy();
+		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, FString::Printf(TEXT("%d"), GameMode->GetLives()));
 	}
 }
 
